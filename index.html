@@ -50,6 +50,21 @@
         }
     </style>
 </head>
+    <script>
+function togglePoem() {
+    const poem = document.getElementById('hiddenPoem');
+    const button = document.getElementById('eggButton');
+    // 切换显示状态
+    if (poem.style.display === 'none') {
+        poem.style.display = 'block';
+        button.textContent = '🕊️ 收起诗意'; // 点击后按钮文字变更
+    } else {
+        poem.style.display = 'none';
+        button.textContent = '🕊️ 点击揭晓创作灵感';
+    }
+}
+</script>
+
 <body>
     <header class="header">
         <h1>Jingwen Choreography</h1>
@@ -67,16 +82,25 @@
         <img src="/images/work3.jpg" alt="实验影像《呼吸之间》静帧" class="gallery-img">
     </div>
 
-    <!-- 交互彩蛋区 -->
-    <div style="text-align: center; margin: 50px 0;">
-        <button onclick="showEasterEgg()" 
-                style="padding: 10px 20px; background: #333; color: white; border: none; cursor: pointer;">
-            🎭 创作背后的诗
-        </button>
-        <div id="hidden-poem" style="display:none; margin-top: 20px; font-style: italic;">
-            <p>"在动作的间隙，<br>时间碎裂成星辰般的可能。"</p>
-        </div>
+   <!-- 彩蛋按钮 -->
+<div style="text-align: center; margin: 40px 0;">
+    <button 
+        id="eggButton" 
+        style="padding: 12px 24px; 
+               background: #2c3e50; 
+               color: white; 
+               border: none; 
+               border-radius: 25px; 
+               cursor: pointer;"
+        onclick="togglePoem()"
+    >
+        🕊️ 点击揭晓创作灵感
+    </button>
+    <div id="hiddenPoem" style="display: none; margin-top: 20px; font-style: italic; color: #666;">
+        <p>"当身体成为语言的容器，<br>沉默便拥有了自己的韵律。"</p>
     </div>
+</div>
+
     
     <script>
         // 显示隐藏内容
