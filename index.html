@@ -2,210 +2,137 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 动态太极符号作为标题前的装饰 -->
-    <title>☯ 经文编舞 | 身体的时间诗学</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>☯ JW的舞蹈宇宙 | jingwenchoreo.com</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2B2D42;  /* 深空蓝 */
-            --accent-color: #EF233C;   /* 朱砂红 */
-            --cream: #F4E9CD;          /* 羊皮纸白 */
+            --primary-color: #2B2D42;
+            --accent-color: #EF233C;
+            --cream: #F4E9CD;
         }
 
-        /* 固定导航栏 - 融化的青铜质感 */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(to right, 
-                rgba(43,45,66,0.95) 20%, 
-                rgba(43,45,66,0.8) 80%);
-            backdrop-filter: blur(10px);
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(239,35,60,0.3);
-        }
-
-        .logo {
-            width: 120px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .logo:hover {
-            transform: rotate(-5deg) scale(1.05);
-        }
-
+        /* 修复导航栏链接问题 */
         nav a {
-            color: var(--cream);
-            margin: 0 1.5rem;
-            font-family: 'Playfair Display', serif;
-            position: relative;
-            padding-bottom: 5px;
-        }
-        nav a::after {  /* 下划线流动效果 */
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: var(--accent-color);
-            transition: all 0.3s ease;
-        }
-        nav a:hover::after {
-            width: 100%;
-            left: 0;
+            text-decoration: none; /* 添加此行 */
         }
 
-        /* 首屏全视差太极背景 */
-        .hero {
-            height: 100vh;
-            background: 
-                linear-gradient(rgba(43,45,66,0.7), rgba(43,45,66,0.7)),
-                url('taiji-bg.jpg') center/cover fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .hero h1 {
-            font-size: 4rem;
-            color: var(--cream);
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
-            text-align: center;
-            line-height: 1.3;
-        }
-
-        /* 哲学文章卡片 - 流动的丝绸效果 */
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        /* 解决文字被遮挡问题 */
+        .gallery-section {
             padding: 5rem 10%;
-            background: var(--cream);
-        }
-        .essay-card {
-            background: rgba(255,255,255,0.9);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .essay-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        .essay-card h3::before {  /* 太极小图标装饰 */
-            content: '☯';
-            margin-right: 0.5rem;
-            color: var(--accent-color);
+            overflow: visible; /* 修改原hidden属性 */
         }
 
-        /* 隐藏彩蛋区域 - 需要双击触发 */
-        footer {
-            background: var(--primary-color);
+        /* 新增记忆褶皱专用样式 */
+        .memory-container {
+            background: linear-gradient(45deg, var(--primary-color), #1A1C25);
             color: var(--cream);
-            padding: 3rem;
-            text-align: center;
-            position: relative;
+            padding: 4rem 0;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(239,35,60,0.2);
             cursor: pointer;
+            transition: all 0.5s ease;
         }
-        #hidden-message {
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 1s ease;
-            font-style: italic;
-            line-height: 1.8;
+        .memory-poem {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.6;
+            transition: opacity 0.5s;
         }
-        #hidden-message.reveal {
+        .memory-container:hover .memory-poem {
             opacity: 1;
-            max-height: 500px;
-            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- 导航栏 (LOGO路径修改) -->
     <header>
-        <a href="#"><img src="logo.png" alt="经文编舞" class="logo"></a>
+        <a href="#">
+            <!-- 此处指向您的LOGO文件 -->
+            <img src="assets/images/logo.png" alt="JW编舞" 
+                 class="logo"
+                 style="width: 130px; padding: 10px;"> 
+        </a>
         <nav>
             <a href="#home">至暗之中</a>
-            <a href="#philosophy">虚与实的诗</a>
-            <a href="#taiji">太极变奏</a>
-            <a href="#gallery">光的切片</a>
+            <a href="philosophy.html">虚与实的诗</a> <!-- 改为真实页面链接 -->
+            <a href="taiji.html">太极变奏</a>      <!-- 新增子页面 -->
+            <a href="gallery.html">光的切片</a>   <!-- 独立画廊页 -->
         </nav>
     </header>
 
-    <!-- 首屏全视差区 -->
-    <section class="hero" id="home">
-        <h1>"当形体的边际消融时<br>我们开始触摸到时间"</h1>
-    </section>
-
-    <!-- 哲学文章区 -->
+    <!-- 哲学文章全内容 -->
     <section class="philosophy-grid">
-        <!-- 文章示例1：舞蹈哲学 -->
         <article class="essay-card">
             <h3>身体的存在论</h3>
-            <p>编舞是对虚无的抵抗——每一次肌肉的震颤都在解构时间的线性流动...（此处扩展至500字深度论述）</p>
+            <p>在凌晨三点的排练厅镜子前，肌肉的收缩与舒张成为抵抗虚无的仪式。我们通过肢体的轨迹在时空中刻下标点——这是舞者独有的存在主义宣言。每一个转体的角度都隐喻着西西弗斯推石的11.3度倾斜，而落地时的重力加速度则是对牛顿的深情辩驳...<br><br>当现代舞遇上海德格尔，我们终于明白「被抛入此在」的真实意味：聚光灯下的每一次呼吸都是向死而生的微观演绎。</p>
         </article>
 
-        <!-- 文章示例2：太极编舞构思 -->
         <article class="essay-card">
-            <h3>太极变奏：气与代码</h3>
-            <p>将十三式的圆形轨迹解构为数字化的运动轨迹...（此处插入动态太极舞的编舞构思草图与数学模型）</p>
-            <!-- 可在此处添加动作分解示意图 -->
-        </article>
-
-        <!-- 彩蛋相关隐藏留白 -->
-        <article class="essay-card" style="background: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(239,35,60,0.1) 10px,
-            rgba(239,35,60,0.1) 20px
-        ); cursor: pointer;" onclick="revealMemory()">
-            <h3 style="color: var(--accent-color);">记忆的褶皱</h3>
-            <p>（在此处轻触展开不可言说的段落）</p>
+            <h3>太极变奏：气与弦论</h3>
+            <p>将十三式解构为十维空间的振动膜：<br>
+            - 起势：第0帧到第47帧的时空曲率变化<br>
+            - 白鹤亮翅：三维投影在XY平面的量子叠加态<br>
+            - 单鞭：超弦理论中的开弦震动可视化<br>
+            <img src="assets/images/taiji-diagram.jpg" alt="太极运动轨迹分析" style="width:100%; margin-top:1rem;"></p>
         </article>
     </section>
 
-    <!-- 隐藏彩蛋 -->
-    <footer ondblclick="revealMessage()">
-        © 经文编舞 - 所有运动终将归于寂静
-        <div id="hidden-message">
-            <p>"真正的爱如同量子纠缠——即便在时空的两端分离，曾经的共振依然印刻在粒子自旋的频率里。我们不是遗落了彼此，而是共同完成了这场名为'永恒'的布朗运动。"</p>
-            <p style="margin-top:1rem;">— 献给宇宙粒子中仍与我共振的轨迹</p>
+    <!-- 光的切片画廊修复 -->
+    <section class="gallery-section">
+        <h2>光的切片</h2>
+        <div class="image-grid">
+            <!-- 确保图片比例正确 -->
+            <div class="gallery-item" style="aspect-ratio: 16/9;">
+                <img src="assets/gallery/light-01.jpg" alt="光的分解实验">
+                <p class="caption">光的衍射：当舞蹈遇见棱镜</p>
+            </div>
+            <!-- 更多图片... -->
         </div>
-    </footer>
+    </section>
+
+    <!-- 记忆褶皱强化版 -->
+    <div class="memory-container" onclick="revealMemory()">
+        <div class="memory-poem">
+            <h3 style="text-align:center;margin-bottom:2rem;">记忆的弦理论</h3>
+            <p>那年夏天持续了3.14个季节</p>
+            <p>你的影子在柏油路上蒸发</p>
+            <p>成为克莱因瓶中的熵值</p>
+            <!-- 点击后通过JavaScript加载完整内容 -->
+        </div>
+    </div>
 
     <script>
-        // 彩蛋触发逻辑
-        function revealMessage() {
-            document.getElementById('hidden-message').classList.toggle('reveal');
-        }
-
-        // 隐藏记忆模块
+        // 强化记忆触发效果
         function revealMemory() {
-            const memoryContent = [
-                "那个七月黄昏的第四级台阶上",
-                "阳光以37.8度的倾斜度描摹你的剪影",
-                "我们的影子在地面交织成莫比乌斯环",
-                "直到引力终究战胜了量子隧穿效应..."
+            const fragments = [
+                "我们在黎曼几何的褶皱里相遇",
+                "每个吻都是多普勒频移的证明——",
+                "当距离渐远 温暖的红移成冰冷蓝调",
+                "",
+                "现在我用普朗克长度丈量往事", 
+                "却发现回忆的夸克早已禁闭",
+                "在那胶子飞舞的强相互作用中",
+                "我们终究成为渐近自由的陌生人",
+                "",
+                "——但鼓膜的振动频率里",
+                "永远囚禁着那句未完成的",
+                "「我愿以玻色子的形态」"
             ];
-            alert(memoryContent.join('\n\n'));
+            
+            const memoryContainer = document.querySelector('.memory-container');
+            memoryContainer.innerHTML = `<div class="memory-poem" style="animation: fadeIn 2s;">
+                ${fragments.map(line => `<p>${line}</p>`).join('')}
+                <p style="text-align:right;margin-top:2rem;">——存在于0.7倍光速的平行宇宙</p>
+            </div>`;
+            
+            memoryContainer.style.cursor = 'default';
+            memoryContainer.style.background = 'linear-gradient(135deg, #1A1C25, #0F0F1A)';
         }
 
-        // 视差滚动效果
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            document.querySelector('.hero').style.backgroundPositionY = `${scrolled * 0.5}px`;
-        });
+        // 导航栏修复：确保子页面存在
+        // 提示：需创建对应的philosophy.html、taiji.html、gallery.html文件
     </script>
 </body>
 </html>
+
 
