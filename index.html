@@ -1,86 +1,23 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jingwen Choreography | 当代舞蹈创作实验室</title>
-    <meta name="description" content="文俊编舞艺术官网，呈现跨界舞蹈剧场、影像装置及肢体实验作品">
-    <style>
-        /* 基础样式 */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        
-        .header {
-            text-align: center;
-            padding: 50px 0;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('/images/header-dancer.png');
-            color: white;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        
-        .gallery-img:hover {
-            transform: scale(1.03);
-        }
-        
-        /* 移动端优化 */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 24px;
-            }
-        }
-    </style>
-</head>
-    <script>
-function togglePoem() {
-    const poem = document.getElementById('hiddenPoem');
-    const button = document.getElementById('eggButton');
-    // 切换显示状态
-    if (poem.style.display === 'none') {
-        poem.style.display = 'block';
-        button.textContent = '🕊️ 收起诗意'; // 点击后按钮文字变更
-    } else {
-        poem.style.display = 'none';
-        button.textContent = '🕊️ 点击揭晓创作灵感';
-    }
-}
-</script>
+<!-- 首页哲思内容区块 -->
+<section class="philosophy-section">
+  <div class="quote-container">
+    <blockquote>
+      “舞蹈是在时间的裂缝中雕刻永恒...”
+      <footer>— 经文编舞的理念核心</footer>
+    </blockquote>
+  </div>
+  
+  <div class="essay-grid">
+    <!-- 文章卡片示例 -->
+    <article class="essay-card">
+      <h3>身体即语言</h3>
+      <p>在编舞中，身体不仅是媒介，更是未被翻译的诗...</p>
+      <a href="/philosophy/body-as-language" class="read-more">深入阅读 →</a>
+    </article>
+    <!-- 重复添加更多文章 -->
+  </div>
+</section>
 
-<body>
-    <header class="header">
-        <h1>Jingwen Choreography</h1>
-        <p>探索身体与空间的诗意对话</p>
-    </header>
-
-    <section class="intro">
-        <h2>创作理念</h2>
-        <p>从传统戏曲身段到当代多媒体剧场，致力于解构肢体表达的边界...</p>
-    </section>
-
-    <div class="gallery">
-        <img src="/images/work1.jpg" alt="《瞬息》- 2023年乌镇戏剧节委约作品" class="gallery-img">
-        <img src="/images/work2.jpg" alt="《折叠城市》巡演剧照 - 2022" class="gallery-img">
-        <img src="/images/dancer.png" alt="实验影像《呼吸之间》静帧" class="gallery-img">
-    </div>
 
    <!-- 彩蛋按钮 -->
 <div style="text-align: center; margin: 40px 0;">
