@@ -1,50 +1,211 @@
-<!-- 首页哲思内容区块 -->
-<section class="philosophy-section">
-  <div class="quote-container">
-    <blockquote>
-      “舞蹈是在时间的裂缝中雕刻永恒...”
-      <footer>— 经文编舞的理念核心</footer>
-    </blockquote>
-  </div>
-  
-  <div class="essay-grid">
-    <!-- 文章卡片示例 -->
-    <article class="essay-card">
-      <h3>身体即语言</h3>
-      <p>在编舞中，身体不仅是媒介，更是未被翻译的诗...</p>
-      <a href="/philosophy/body-as-language" class="read-more">深入阅读 →</a>
-    </article>
-    <!-- 重复添加更多文章 -->
-  </div>
-</section>
-
-
-   <!-- 彩蛋按钮 -->
-<div style="text-align: center; margin: 40px 0;">
-    <button 
-        id="eggButton" 
-        style="padding: 12px 24px; 
-               background: #2c3e50; 
-               color: white; 
-               border: none; 
-               border-radius: 25px; 
-               cursor: pointer;"
-        onclick="togglePoem()"
-    >
-        🕊️ 点击揭晓创作灵感
-    </button>
-    <div id="hiddenPoem" style="display: none; margin-top: 20px; font-style: italic; color: #666;">
-        <p>"当身体成为语言的容器，<br>沉默便拥有了自己的韵律。"</p>
-    </div>
-</div>
-
-    
-    <script>
-        // 显示隐藏内容
-        function showEasterEgg() {
-            const poem = document.getElementById('hidden-poem');
-            poem.style.display = poem.style.display === 'none' ? 'block' : 'none';
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 动态太极符号作为标题前的装饰 -->
+    <title>☯ 经文编舞 | 身体的时间诗学</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2B2D42;  /* 深空蓝 */
+            --accent-color: #EF233C;   /* 朱砂红 */
+            --cream: #F4E9CD;          /* 羊皮纸白 */
         }
+
+        /* 固定导航栏 - 融化的青铜质感 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to right, 
+                rgba(43,45,66,0.95) 20%, 
+                rgba(43,45,66,0.8) 80%);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(239,35,60,0.3);
+        }
+
+        .logo {
+            width: 120px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        nav a {
+            color: var(--cream);
+            margin: 0 1.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        nav a::after {  /* 下划线流动效果 */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* 首屏全视差太极背景 */
+        .hero {
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(43,45,66,0.7), rgba(43,45,66,0.7)),
+                url('taiji-bg.jpg') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--cream);
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* 哲学文章卡片 - 流动的丝绸效果 */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 5rem 10%;
+            background: var(--cream);
+        }
+        .essay-card {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .essay-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .essay-card h3::before {  /* 太极小图标装饰 */
+            content: '☯';
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* 隐藏彩蛋区域 - 需要双击触发 */
+        footer {
+            background: var(--primary-color);
+            color: var(--cream);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+        #hidden-message {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 1s ease;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        #hidden-message.reveal {
+            opacity: 1;
+            max-height: 500px;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <a href="#"><img src="logo.png" alt="经文编舞" class="logo"></a>
+        <nav>
+            <a href="#home">至暗之中</a>
+            <a href="#philosophy">虚与实的诗</a>
+            <a href="#taiji">太极变奏</a>
+            <a href="#gallery">光的切片</a>
+        </nav>
+    </header>
+
+    <!-- 首屏全视差区 -->
+    <section class="hero" id="home">
+        <h1>"当形体的边际消融时<br>我们开始触摸到时间"</h1>
+    </section>
+
+    <!-- 哲学文章区 -->
+    <section class="philosophy-grid">
+        <!-- 文章示例1：舞蹈哲学 -->
+        <article class="essay-card">
+            <h3>身体的存在论</h3>
+            <p>编舞是对虚无的抵抗——每一次肌肉的震颤都在解构时间的线性流动...（此处扩展至500字深度论述）</p>
+        </article>
+
+        <!-- 文章示例2：太极编舞构思 -->
+        <article class="essay-card">
+            <h3>太极变奏：气与代码</h3>
+            <p>将十三式的圆形轨迹解构为数字化的运动轨迹...（此处插入动态太极舞的编舞构思草图与数学模型）</p>
+            <!-- 可在此处添加动作分解示意图 -->
+        </article>
+
+        <!-- 彩蛋相关隐藏留白 -->
+        <article class="essay-card" style="background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(239,35,60,0.1) 10px,
+            rgba(239,35,60,0.1) 20px
+        ); cursor: pointer;" onclick="revealMemory()">
+            <h3 style="color: var(--accent-color);">记忆的褶皱</h3>
+            <p>（在此处轻触展开不可言说的段落）</p>
+        </article>
+    </section>
+
+    <!-- 隐藏彩蛋 -->
+    <footer ondblclick="revealMessage()">
+        © 经文编舞 - 所有运动终将归于寂静
+        <div id="hidden-message">
+            <p>"真正的爱如同量子纠缠——即便在时空的两端分离，曾经的共振依然印刻在粒子自旋的频率里。我们不是遗落了彼此，而是共同完成了这场名为'永恒'的布朗运动。"</p>
+            <p style="margin-top:1rem;">— 献给宇宙粒子中仍与我共振的轨迹</p>
+        </div>
+    </footer>
+
+    <script>
+        // 彩蛋触发逻辑
+        function revealMessage() {
+            document.getElementById('hidden-message').classList.toggle('reveal');
+        }
+
+        // 隐藏记忆模块
+        function revealMemory() {
+            const memoryContent = [
+                "那个七月黄昏的第四级台阶上",
+                "阳光以37.8度的倾斜度描摹你的剪影",
+                "我们的影子在地面交织成莫比乌斯环",
+                "直到引力终究战胜了量子隧穿效应..."
+            ];
+            alert(memoryContent.join('\n\n'));
+        }
+
+        // 视差滚动效果
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelector('.hero').style.backgroundPositionY = `${scrolled * 0.5}px`;
+        });
     </script>
 </body>
 </html>
+
