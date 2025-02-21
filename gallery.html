@@ -146,8 +146,8 @@
 
         // 特殊回忆解密
         function revealDanceMemory() {
-            const memoryKey = prompt("输入最后一次共舞的日期 (2018-11-29)");
-            if(memoryKey === '2023-08-19') { // 替换成真实日期
+            const memoryKey = prompt("输入最后一次共舞的日期 (YYYY-MM-DD)”);
+            if(memoryKey === '2018-11-29') { // 替换成真实日期
                 window.location.href = 'secret-memory.html';
             } else {
                 alert("时空校验失败\n错误偏移量：" + 
