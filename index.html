@@ -1,140 +1,159 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="dimensional-system">
 <head>
-     <meta charset="UTF-8">
-    <!-- 动态太极符号作为标题前的装饰 -->
-    <title>☯ JW编舞 | 身体的时间诗学</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2B2D42;  /* 深空蓝 */
-            --accent-color: #EF233C;   /* 朱砂红 */
-            --cream: #F4E9CD;          /* 羊皮纸白 */
+            /* 统一维度参数 */
+            --primary-nexus: #201F2F;
+            --emergent-purple: #685AD9;
+            --void-orange: #FF6B35;
+            --quantum-glow: radial-gradient(circle, 
+                var(--emergent-purple) 0%, 
+                var(--primary-nexus) 70%);
         }
 
-        /* 修复导航栏链接问题 */
-        nav a {
-            text-decoration: none; /* 添加此行 */
+        /* 星际导航架构 */
+        .stellar-nav {
+            background: rgba(32,31,47,0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(104,90,217,0.3);
+            box-shadow: 0 0 30px rgba(104,90,217,0.2);
         }
 
-        /* 解决文字被遮挡问题 */
-        .gallery-section {
-            padding: 5rem 10%;
-            overflow: visible; /* 修改原hidden属性 */
+        .nav-link {
+            position: relative;
+            padding: 1rem 2rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
-        /* 新增记忆褶皱专用样式 */
-        .memory-container {
-            background: linear-gradient(45deg, var(--primary-color), #1A1C25);
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--void-orange);
+            transition: 0.3s ease-out;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        /* 维度星门入口 */
+        .stargate-portal {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            padding: 8rem 10%;
+            position: relative;
+            background: var(--quantum-glow),
+                        linear-gradient(15deg, 
+                            var(--primary-nexus) 0%, 
+                            transparent 100%);
+        }
+
+        .dimensional-card {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(104,90,217,0.5);
+            transform-style: preserve-3d;
+            transition: transform 0.6s, box-shadow 0.3s;
+            background: rgba(32,31,47,0.6);
+        }
+
+        .dimensional-card:hover {
+            transform: rotateY(10deg) translateZ(20px);
+            box-shadow: 0 0 40px rgba(104,90,217,0.4);
+        }
+
+        .card-nexus {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent 0 10px,
+                rgba(255,107,53,0.1) 10px 20px
+            );
+            mix-blend-mode: overlay;
+        }
+
+        /* 引力联动文字 */
+        .gravitational-text {
+            font-size: 4rem;
+            text-align: center;
+            margin: 5rem 0;
+            position: relative;
             color: var(--cream);
-            padding: 4rem 0;
-            margin-top: 5rem;
-            border-top: 1px solid rgba(239,35,60,0.2);
-            cursor: pointer;
-            transition: all 0.5s ease;
+            text-shadow: 0 0 20px rgba(104,90,217,0.5);
         }
-        .memory-poem {
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.6;
-            transition: opacity 0.5s;
+
+        .gravitational-text::after {
+            content: '※';
+            position: absolute;
+            right: -1em;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: celestial-rotate 20s linear infinite;
         }
-        .memory-container:hover .memory-poem {
-            opacity: 1;
+
+        @keyframes celestial-rotate {
+            100% { transform: translateY(-50%) rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 (LOGO路径修改) -->
-    <header>
-        <a href="#">
-            <!-- 此处指向您的LOGO文件 -->
-            <img src="assets/images/logo.png" alt="JW编舞" 
-                 class="logo"
-                 style="width: 130px; padding: 10px;"> 
+    <nav class="stellar-nav">
+        <a href="index.html" class="quantum-logo">
+            <svg><!-- 嵌入与taiji页面同源的logo矢量路径 --></svg>
         </a>
-        <nav>
-            <a href="#home">至暗之中</a>
-            <a href="philosophy.html">虚与实的诗</a> <!-- 改为真实页面链接 -->
-            <a href="taiji.html">太极变奏</a>      <!-- 新增子页面 -->
-            <a href="gallery.html">光的切片</a>   <!-- 独立画廊页 -->
-        </nav>
-    </header>
-
-    <!-- 哲学文章全内容 -->
-    <section class="philosophy-grid">
-        <article class="essay-card">
-            <h3>身体的存在论</h3>
-            <p>在凌晨三点的排练厅镜子前，肌肉的收缩与舒张成为抵抗虚无的仪式。我们通过肢体的轨迹在时空中刻下标点——这是舞者独有的存在主义宣言。每一个转体的角度都隐喻着西西弗斯推石的11.3度倾斜，而落地时的重力加速度则是对牛顿的深情辩驳...<br><br>当现代舞遇上海德格尔，我们终于明白「被抛入此在」的真实意味：聚光灯下的每一次呼吸都是向死而生的微观演绎。</p>
-        </article>
-
-        <article class="essay-card">
-            <h3>太极变奏：气与弦论</h3>
-            <p>将十三式解构为十维空间的振动膜：<br>
-            - 起势：第0帧到第47帧的时空曲率变化<br>
-            - 白鹤亮翅：三维投影在XY平面的量子叠加态<br>
-            - 单鞭：超弦理论中的开弦震动可视化<br>
-            <img src="assets/images/taiji-diagram.jpg" alt="太极运动轨迹分析" style="width:100%; margin-top:1rem;"></p>
-        </article>
-    </section>
-
-    <!-- 光的切片画廊修复 -->
-    <section class="gallery-section">
-        <h2>光的切片</h2>
-        <div class="image-grid">
-            <!-- 确保图片比例正确 -->
-            <div class="gallery-item" style="aspect-ratio: 16/9;">
-                <img src="assets/gallery/light-01.jpg" alt="光的分解实验">
-                <p class="caption">光的衍射：当舞蹈遇见棱镜</p>
-            </div>
-            <!-- 更多图片... -->
+        <div class="dimensional-links">
+            <a href="philosophy.html" class="nav-link">虚实的拓扑学</a>
+            <a href="taiji.html" class="nav-link">阴阳动力学</a>
+            <a href="gallery.html" class="nav-link">光的弦论</a>
         </div>
-    </section>
+    </nav>
 
-    <!-- 记忆褶皱强化版 -->
-    <div class="memory-container" onclick="revealMemory()">
-        <div class="memory-poem">
-            <h3 style="text-align:center;margin-bottom:2rem;">记忆的弦理论</h3>
-            <p>那年夏天持续了3.14个季节</p>
-            <p>你的影子在柏油路上蒸发</p>
-            <p>成为克莱因瓶中的熵值</p>
-            <!-- 点击后通过JavaScript加载完整内容 -->
+    <main class="stargate-portal">
+        <div class="dimensional-card" data-link="philosophy">
+            <div class="card-nexus"></div>
+            <h3 class="interstellar-title">虚无的解域</h3>
+            <span class="dimensional-tag">#梅洛庞蒂通道</span>
+            <p>身体在虚空中的书写... <a href="philosophy.html" class="quantum-link">穿过星门 →</a></p>
         </div>
-    </div>
 
-    <script>
-        // 强化记忆触发效果
-        function revealMemory() {
-            const fragments = [
-                "我们在黎曼几何的褶皱里相遇",
-                "每个吻都是多普勒频移的证明——",
-                "当距离渐远 温暖的红移成冰冷蓝调",
-                "",
-                "现在我用普朗克长度丈量往事", 
-                "却发现回忆的夸克早已禁闭",
-                "在那胶子飞舞的强相互作用中",
-                "我们终究成为渐近自由的陌生人",
-                "",
-                "——但鼓膜的振动频率里",
-                "永远囚禁着那句未完成的",
-                "「我愿以玻色子的形态」"
-            ];
-            
-            const memoryContainer = document.querySelector('.memory-container');
-            memoryContainer.innerHTML = `<div class="memory-poem" style="animation: fadeIn 2s;">
-                ${fragments.map(line => `<p>${line}</p>`).join('')}
-                <p style="text-align:right;margin-top:2rem;">——存在于0.7倍光速的平行宇宙</p>
-            </div>`;
-            
-            memoryContainer.style.cursor = 'default';
-            memoryContainer.style.background = 'linear-gradient(135deg, #1A1C25, #0F0F1A)';
-        }
+        <div class="dimensional-card" data-link="taiji">
+            <div class="card-nexus"></div>
+            <h3 class="interstellar-title">阴阳的超弦</h3>
+            <span class="dimensional-tag">#十一维振动</span>
+            <p>太极招式在卡拉比-丘空间的展开... <a href="taiji.html" class="quantum-link">折叠时空 →</a></p>
+        </div>
+    </main>
 
-        // 导航栏修复：确保子页面存在
-        // 提示：需创建对应的philosophy.html、taiji.html、gallery.html文件
+    <h2 class="gravitational-text">
+        在光的裂缝中<br>
+        观看世界重组的公式
+    </h2>
+
+    <!-- 复用taiji页面的粒子系统 -->
+    <script type="module">
+        import { QuantumField } from '/modules/nexus-system.js';
+        
+        const quantumConfig = {
+            particleDensity: 0.7,
+            colorSpectrum: [
+                [104,90,217],  // 紫色系
+                [255,107,53]   // 橙色系
+            ],
+            interactive: true
+        };
+
+        new QuantumField(document.body, quantumConfig);
     </script>
 </body>
 </html>
-
 
