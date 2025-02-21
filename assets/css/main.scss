@@ -1,0 +1,35 @@
+/* 固定导航栏样式 */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(249, 246, 242, 0.95);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+  .logo {
+    height: 50px; // 根据实际 LOGO 尺寸调整
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .main-nav ul {
+    display: flex;
+    gap: 2rem;
+    li a {
+      color: #2D2D2D;
+      font-family: 'Playfair Display', serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      &:hover {
+        color: #B93C3C; // 悬停时红色点缀
+      }
+    }
+  }
+}
