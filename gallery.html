@@ -1,0 +1,159 @@
+<!-- 在gallery.html文件中插入以下代码 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 共用头部内容与主页一致 -->
+    <style>
+        /* 新增画廊专属样式 */
+        .gallery-container {
+            padding: 4rem 2%;
+            column-count: 4;
+            column-gap: 1rem;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-container { column-count: 3; }
+        }
+        @media (max-width: 800px) {
+            .gallery-container { column-count: 2; }
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            position: relative;
+            cursor: zoom-in;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            filter: grayscale(30%);
+            transition: filter 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0);
+            box-shadow: 0 8px 25px rgba(239,35,60,0.3);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            font-family: 'Lora', serif;
+        }
+
+        .gallery-item:hover .image-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 灯箱样式 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            cursor: zoom-out;
+        }
+
+        .lightbox-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: fadeInScale 0.5s both;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 共用导航栏 -->
+    <header>
+        <a href="index.html"><img src="assets/images/logo.png" class="logo"></a>
+        <nav>
+            <a href="index.html">至暗之中</a>
+            <a href="philosophy.html">虚与实的诗</a>
+            <a href="taiji.html">太极变奏</a>
+            <a href="gallery.html">光的切片</a>
+        </nav>
+    </header>
+
+    <!-- 光谱画廊 -->
+    <main class="gallery-container">
+        <!-- 项目1-带隐藏诗句 -->
+        <div class="gallery-item" 
+             onclick="showLightbox(this)"
+             data-poem="当快门速度降至1/4秒 光便开始舞蹈">
+            <img src="assets/gallery/spectrum-1.jpg" 
+                 alt="光的波动性实验">
+            <div class="image-caption">波长：632.8nm（氦氖激光的独白）</div>
+        </div>
+
+        <!-- 项目2-互动彩蛋 -->
+        <div class="gallery-item special-memory"
+             onclick="revealDanceMemory()">
+            <img src="assets/gallery/memory-encrypted.jpg" 
+                 alt="加密的回忆">
+            <div class="image-caption">点击破译时光密码 →</div>
+        </div>
+
+        <!-- 更多画廊项目... -->
+    </main>
+
+    <!-- 灯箱容器 -->
+    <div class="lightbox" onclick="closeLightbox()">
+        <img class="lightbox-content">
+        <div class="lightbox-poem"></div>
+    </div>
+
+    <script>
+        // 灯箱控制系统
+        function showLightbox(element) {
+            const lightbox = document.querySelector('.lightbox');
+            const imgSrc = element.querySelector('img').src;
+            const poem = element.dataset.poem || "";
+
+            lightbox.querySelector('img').src = imgSrc;
+            lightbox.querySelector('.lightbox-poem').innerHTML = poem;
+            lightbox.style.display = 'block';
+        }
+
+        function closeLightbox() {
+            document.querySelector('.lightbox').style.display = 'none';
+        }
+
+        // 特殊回忆解密
+        function revealDanceMemory() {
+            const memoryKey = prompt("输入最后一次共舞的日期 (2018-11-29)");
+            if(memoryKey === '2023-08-19') { // 替换成真实日期
+                window.location.href = 'secret-memory.html';
+            } else {
+                alert("时空校验失败\n错误偏移量：" + 
+                     Math.random().toString(36).substr(2, 5));
+            }
+        }
+    </script>
+</body>
+</html>
