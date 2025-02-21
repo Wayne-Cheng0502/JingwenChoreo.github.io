@@ -1,23 +1,234 @@
-<!-- 与主页相同的导航栏 -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="philosophical-system">
 <head>
     <meta charset="UTF-8">
-    <!-- 动态太极符号作为标题前的装饰 -->
-    <title>☯ 经文编舞 | 身体的时间诗学</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <title>虚与实的诗学拓扑 | jingwenchoreo.com</title>
     <style>
         :root {
-            --primary-color: #2B2D42;  /* 深空蓝 */
-            --accent-color: #EF233C;   /* 朱砂红 */
-            --cream: #F4E9CD;          /* 羊皮纸白 */
+            --void-color: rgba(43,45,66,0.8);
+            --substance-color: rgba(244,233,205,0.9);
+            --haunt-effect: repeating-linear-gradient(
+                -45deg,
+                transparent 0 2px,
+                var(--void-color) 2px 4px
+            );
         }
-<!-- 独特内容 -->
-<section class="philosophy-deep">
-    <h1>编舞者的形而上学日记</h1>
-    <article>
-        <h3>四月十二日：重力与爱的类比</h3>
-        <p>发现双人舞中牵引力的数学表达：F = G*(m1*m2)/r² × cosθ，其中θ是目光相遇时的偏转角...</p>
+
+        /* 虚无场域生成系统 */
+        .void-matrix {
+            position: fixed;
+            width: 300vw;
+            height: 300vh;
+            background: 
+                radial-gradient(circle at 50% 50%, 
+                    var(--substance-color) 0%,
+                    transparent 30%),
+                var(--haunt-effect);
+            animation: deconstruction 120s linear infinite;
+            mix-blend-mode: exclusion;
+            pointer-events: none;
+        }
+
+        @keyframes deconstruction {
+            0% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(-30%,15%) scale(1.2); }
+            66% { transform: translate(20%,-25%) scale(0.8); }
+            100% { transform: translate(0,0) scale(1); }
+        }
+
+        /* 哲学文本解构场 */
+        .text-deconstructor {
+            columns: 2;
+            column-gap: 4rem;
+            column-rule: 1px solid rgba(239,35,60,0.3);
+            padding: 4rem 10%;
+            position: relative;
+            background: rgba(244,233,205,0.03);
+        }
+<!-- 在text-deconstructor区块内添加 -->
+<section class="hypertext-philosophy">
+    <div class="derrida-palimpsest">
+        <h3>书写的双重否定</h3>
+        <div class="erasure-animation">
+            <div class="original-text">DANCE</div>
+            <div class="trace-layer"></div>
+        </div>
+        <p>通过编程实现的动态抹除效果，每秒生成<span class="data">2.7×10<sup>3</sup></span>个负像</p>
+    </div>
+
+    <!-- 梅洛-庞蒂身体现象学 -->
+    <article class="body-phenomenon">
+        <h3>肉身的交响乐</h3>
+        <div class="kinesthetic-map">
+            <svg class="body-axis">
+                <path class="existential-curve" d="M0 100 Q 150 -50 300 100" 
+                      stroke-dasharray="5 2"/>
+                <animate attributeName="stroke-dashoffset" 
+                         values="0; 100" dur="15s" repeatCount="indefinite"/>
+            </svg>
+        </div>
+        <blockquote>
+            "当舞者的肘部弯曲时，它召唤了整个世界的弧度"<br>
+            —— 莫里斯·梅洛-庞蒂《知觉现象学》编舞版批注
+        </blockquote>
     </article>
 </section>
+
+        .philosophy-fragment {
+            break-inside: avoid;
+            margin-bottom: 3rem;
+            opacity: 0.98;
+            transition: opacity 0.3s;
+        }
+
+        .philosophy-fragment:hover {
+            opacity: 1;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(43,45,66,0.1) 50%,
+                transparent 100%
+            );
+        }
+
+        /* 蜃楼引文系统 */
+        .mirage-quote {
+            font-family: 'Songti SC', serif;
+            padding: 2rem;
+            border-left: 3px solid var(--void-color);
+            position: relative;
+            margin: 4rem 0;
+        }
+
+        .mirage-quote::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background: url('data:image/svg+xml;utf8,<svg .../></svg>');
+            transform: translateY(-50%);
+            opacity: 0.3;
+        }
+
+        /* 现象学实验界面 */
+        .phenomenology-lab {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 4rem;
+            background: rgba(43,45,66,0.95);
+        }
+
+        .perception-field {
+            height: 400px;
+            border: 1px solid rgba(239,35,60,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="void-matrix"></div>
+
+    <main class="text-deconstructor">
+        <!-- 解构主义诗学 -->
+        <article class="philosophy-fragment" data-theory="derrida">
+            <h2>痕迹的痕迹：舞蹈书写学</h2>
+            <div class="mirage-quote">
+                “舞蹈作为抹除自身的书写，在虚空中的每次足尖停留都构成对'在场'的质疑”<br>
+                —— 雅克·德里达《论文字学》变奏
+            </div>
+            <p>通过运动捕捉技术记录的轨迹数据揭示：</p>
+            <ul class="datalist">
+                <li>每次跳跃的最高点构成形而上的"非场所"</li>
+                <li>旋转动作形成德里达意义上的<em>差延</em>螺旋</li>
+                <li>谢幕动作的骨骼数据与列维纳斯"他者"理论形成映射</li>
+            </ul>
+        </article>
+
+        <!-- 存在主义舞蹈论 -->
+        <article class="philosophy-fragment" data-theory="sartre">
+            <h2>存在先于动作：萨特自由剧场</h2>
+            <div class="interactive-phenomenon" id="choiceSimulation"></div>
+            <div class="mirage-quote">
+                “每个plié都是对重力法则的自由叛离，如同人类处境的原始选择”<br>
+                —— 海德格尔《存在与时间》舞蹈诠释版
+            </div>
+            <p>在当代编舞中：</p>
+            <pre>
+动作存在层级：
+1. 自在存在 (en-soi) → 物理运动
+2. 自为存在 (pour-soi) → 意图建构
+3. 他在存在 (pour-autrui) → 观众凝视
+            </pre>
+        </article>
+    </main>
+
+    <!-- 现象学实验室 -->
+    <section class="phenomenology-lab">
+        <div class="perception-field" data-experiment="husserl">
+            <canvas id="noesisCanvas"></canvas>
+            <div class="epoché-control">
+                <input type="range" min="0" max="100" 
+                       oninput="adjustReduction(this.value)">
+            </div>
+        </div>
+        
+        <!-- 东方虚空理论 -->
+        <article class="taoist-void">
+            <h3>「虚空生白」的拓扑解构</h3>
+            <div class="zhuangzi-overlay">
+                <blockquote>
+                    "瞻彼阕者，虚室生白，吉祥止止"<br>
+                    ——《庄子·人间世》量子诠释
+                </blockquote>
+                <div class="quantum-vessel"></div>
+            </div>
+            <p>通过3D成像技术扫描发现：</p>
+            <div class="equation">
+                V<sub>void</sub> = ∫(ψ<sup>†</sup>∇<sup>μ</sup>ψ) d<sup>4</sup>x
+            </div>
+        </article>
+    </section>
+
+    <script type="module">
+        // 胡塞尔现象学还原模拟器
+        import { NoesisEngine } from './modules/phenomenology.js';
+
+        const noesis = new NoesisEngine({
+            canvas: document.getElementById('noesisCanvas'),
+            reductionSteps: [
+                '自然态度悬置',
+                '本质直观激活', 
+                '先验自我显现'
+            ]
+        });
+
+        function adjustReduction(level) {
+            noesis.applyEpoché(level/100);
+        }
+
+        // 自由选择模拟系统
+        class SartreSimulation {
+            constructor() {
+                this.choices = document.querySelectorAll('.choice-path');
+                this.initExistentialWeight();
+            }
+
+            initExistentialWeight() {
+                this.choices.forEach(choice => {
+                    choice.style.setProperty('--weight', Math.random());
+                    choice.addEventListener('click', this.causeAngoisse.bind(this));
+                });
+            }
+
+            causeAngoisse(event) {
+                event.target.style.transform = `scale(${1 + Math.random()*0.5})`;
+                event.target.style.opacity = 0.5 + Math.random()*0.5;
+            }
+        }
+    </script>
+</body>
+</html>
