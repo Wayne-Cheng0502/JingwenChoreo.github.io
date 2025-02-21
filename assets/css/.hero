@@ -1,0 +1,12 @@
+/* 在.hero选择器中添加GPU加速 */
+.hero {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* 针对低端设备降级处理 */
+@media (prefers-reduced-motion: reduce) {
+    .hero::before, .philosophy-grid::before {
+        animation: none !important;
+    }
+}
